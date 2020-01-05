@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface DoctorRepository: JpaRepository<Doctor, String> {
+interface DoctorRepository: JpaRepository<Doctor, Int> {
 }
 @Repository
-    interface PatientRepository: JpaRepository<Patient, String> {
+    interface PatientRepository: JpaRepository<Patient, Int> {
 }
