@@ -1,19 +1,25 @@
 package com.example.GradleKotlin.model
 
+import java.util.*
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
 data class Doctor(
         @Id
-        var id: Int = 0,
-        private var name: String ="" ,
-        private var specialist: String = "")
+        val id: UUID,
+        var name: String,
+        var specialist: String)
 
 @Entity
 data class Patient(
         @Id
-        var id: Int = 0,
-        var name: String = "",
-        var adress: String = ""
-)
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        val id: UUID,
+        var name: String,
+        var adress: String)
+fun generateDoctorUUID(): UUID? {
+               return UUID.randomUUID()
+}
