@@ -1,5 +1,6 @@
 package com.example.GradleKotlin.model
 
+import java.sql.Time
 import java.util.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -9,7 +10,7 @@ import javax.persistence.Id
 @Entity
 data class Doctor(
         @Id
-        val id: UUID,
+        val idDoctor: UUID,
         var name: String,
         var specialist: String)
 
@@ -17,9 +18,18 @@ data class Doctor(
 data class Patient(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        val id: UUID,
+        val idPatient: UUID,
         var name: String,
         var adress: String)
-fun generateDoctorUUID(): UUID? {
-               return UUID.randomUUID()
-}
+
+@Entity
+data class Visit(
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        val id: UUID,
+        var data: Date,
+        var time: Time,
+        var place: String,
+        var idDoctor: UUID,
+        var idPatient: UUID
+)
